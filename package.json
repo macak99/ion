@@ -1,14 +1,14 @@
 {
   "name": "ion",
   "version": "1.0.0",
-  "description": "Asynchronous chat application made in Node.js, Express.js and Socket.io",
+  "description": "Asynchronous chat application made in Express.js and Socket.io",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nikola S.",
-  "license": "GPL-3.0",
+  "license": "GPL-2.0",
   "dependencies": {
     "express": "^4.13.3",
     "socket.io": "^1.3.7"
