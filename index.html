@@ -72,13 +72,13 @@
 		var mid = 0;
 
 		$('form').submit(function(){
-			socket.emit('chat poruka', $('#m').val());
+			socket.emit('chat message', $('#m').val());
 			$('#m').val('');
 			mid++;
 			return false;
 		});
 
-		socket.on('chat poruka', function(msg) {
+		socket.on('chat message', function(msg) {
 			$('#messages').append($("<li class='mid' id='mid" + mid + "'>").text(msg));
 			$('body, html').animate({ scrollTop: $("#mid"+mid).offset().top }, 2000);
 		});

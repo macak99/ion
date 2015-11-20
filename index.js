@@ -17,14 +17,14 @@ io.on('connection', function(socket) {
 });
 
 io.on('connection', function(socket) {
-	socket.on('chat poruka', function(msg) {
+	socket.on('chat message', function(msg) {
 		if (msg !== "") {
-			io.emit('chat poruka', msg);
-			console.log("Poruka: " + msg);
+			io.emit('chat message', msg);
+			console.log("Message: " + msg);
 		}
 	});
 });
 
 http.listen(3000, function() {
-	console.log('Server pokrenut na *:3000');
+	console.log('Server started on *:3000');
 });
