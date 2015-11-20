@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<title>Ion</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Styles -->
+		<link rel="stylesheet" type="text/css" href="css/material.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<!-- Fonts -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300&subset=latin,latin-ext">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+		<!-- Scripts -->
+		<script src="js/material.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/socket.io-1.2.0.js"></script>
+	
+	</head>
+
+	<body>
+
+	<div class="container-fluid">
+
+		<div id="content">
+
+			<h2>Welcome to Ion</h2>
+			
+			<div class="row">
+				<div class="col-md-12 text-col">
+					<p>Ion is asynchronous chat application made for simplicity and elegance - no Flash or any other plugin is required, it's based on HTML5 and JavaScript. Created by <a href="http://twitter.com/stojakovic99"
+					target="blank">Nikola</a>.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<script>
+			$(document).ready(function() {
+				$('#content').fadeIn(2000);
+			});
+		</script>
+
+	</div>
+
+	<div id="chatMessages">
+    	<ul id="messages"></ul>
+    </div>
+
+	<div id="messageBox">
+	    <form action="">
+	    	<div class="row">
+	    		<div class="col-md-10" id="messageInput">
+	    			<input id="m" autocomplete="off" />
+	    		</div>
+	    		<div class="col-md-2" id="messageSend">
+	    			<button id="sendButton">Send</button>
+	    		</div>
+	    	</div>
+	    </form>
+	</div>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+
+		var socket = io();
+		var mid = 0;
+
+		$('form').submit(function(){
+			socket.emit('chat poruka', $('#m').val());
+			$('#m').val('');
+			mid++;
+			return false;
+		});
+
+		socket.on('chat poruka', function(msg) {
+			$('#messages').append($("<li class='mid' id='mid" + mid + "'>").text(msg));
+			$('body, html').animate({ scrollTop: $("#mid"+mid).offset().top }, 2000);
+		});
+
+	</script>
+
+	</body>
+
+</html>
