@@ -1,22 +1,13 @@
 {
   "name": "ion",
-<<<<<<< HEAD
   "version": "1.0.1",
-=======
-  "version": "1.0.0",
->>>>>>> 0303b93f5b3bde61652ce6c61f452a6b98e56292
   "description": "Asynchronous chat application made in Express.js and Socket.io",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-<<<<<<< HEAD
   "author": "macak99",
-=======
-  "author": "Nikola S.",
-  "license": "GPL-2.0",
->>>>>>> 0303b93f5b3bde61652ce6c61f452a6b98e56292
   "dependencies": {
     "express": "^4.13.3",
     "markdown": "^0.5.0",
