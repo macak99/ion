@@ -79,7 +79,7 @@
 		});
 
 		socket.on('chat message', function(msg) {
-			$('#messages').append($("<li class='mid' id='mid" + mid + "'>").text(msg));
+			$('#messages').append("<li class='mid' id='mid" + mid + "'>" + msg + "</li>");
 			$('body, html').animate({ scrollTop: $("#mid"+mid).offset().top }, 2000);
 		});
 

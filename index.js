@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var markdown = require('markdown').markdown;
+
+// set to true to enable Markdown
+var markdownSyntax = false;
 
 app.use(express.static('public'));
 
@@ -19,7 +23,13 @@ io.on('connection', function(socket) {
 io.on('connection', function(socket) {
 	socket.on('chat message', function(msg) {
 		if (msg !== "") {
-			io.emit('chat message', msg);
+
+			if (markdownSyntax) {
+				io.emit('chat message', markdown.toHTML(msg));
+			} else {
+				io.emit('chat message', msg);
+			}
+
 			console.log("Message: " + msg);
 		}
 	});
